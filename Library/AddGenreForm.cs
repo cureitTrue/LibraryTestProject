@@ -26,7 +26,7 @@ namespace Library
             {
                 dbContext.Genres.Add(new GenreData()
                 {
-                    Genre = bookGenreTextBox.Text
+                    GenreStr = bookGenreTextBox.Text
                 });
                 dbContext.SaveChanges();
             }

@@ -41,14 +41,20 @@
             myLibraryBookNameSearchLabel = new Label();
             myLibraryBookGenreSearchComboBox = new ComboBox();
             myLibraryBookNameSearchTextBox = new TextBox();
+            tabPage2 = new TabPage();
+            genresDataGridView = new DataGridView();
+            genreColumn = new DataGridViewTextBoxColumn();
             tabControl1.SuspendLayout();
             tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)myLibraryDataGridView).BeginInit();
+            tabPage2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)genresDataGridView).BeginInit();
             SuspendLayout();
             // 
             // tabControl1
             // 
             tabControl1.Controls.Add(tabPage1);
+            tabControl1.Controls.Add(tabPage2);
             tabControl1.Dock = DockStyle.Fill;
             tabControl1.Location = new Point(0, 0);
             tabControl1.Name = "tabControl1";
@@ -180,6 +186,43 @@
             myLibraryBookNameSearchTextBox.Size = new Size(240, 27);
             myLibraryBookNameSearchTextBox.TabIndex = 1;
             // 
+            // tabPage2
+            // 
+            tabPage2.Controls.Add(genresDataGridView);
+            tabPage2.Location = new Point(4, 29);
+            tabPage2.Name = "tabPage2";
+            tabPage2.Size = new Size(799, 419);
+            tabPage2.TabIndex = 1;
+            tabPage2.Text = "Жанры";
+            tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // genresDataGridView
+            // 
+            genresDataGridView.AllowUserToAddRows = false;
+            genresDataGridView.AllowUserToDeleteRows = false;
+            genresDataGridView.AllowUserToResizeRows = false;
+            genresDataGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            genresDataGridView.Columns.AddRange(new DataGridViewColumn[] { genreColumn });
+            genresDataGridView.Dock = DockStyle.Fill;
+            genresDataGridView.Location = new Point(0, 0);
+            genresDataGridView.MultiSelect = false;
+            genresDataGridView.Name = "genresDataGridView";
+            genresDataGridView.ReadOnly = true;
+            genresDataGridView.RowHeadersVisible = false;
+            genresDataGridView.RowHeadersWidth = 51;
+            genresDataGridView.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            genresDataGridView.Size = new Size(799, 419);
+            genresDataGridView.TabIndex = 0;
+            genresDataGridView.MouseClick += OnGenresDataGridViewMouseClick;
+            // 
+            // genreColumn
+            // 
+            genreColumn.HeaderText = "Жанр";
+            genreColumn.MinimumWidth = 6;
+            genreColumn.Name = "genreColumn";
+            genreColumn.ReadOnly = true;
+            genreColumn.Width = 750;
+            // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -193,6 +236,8 @@
             tabPage1.ResumeLayout(false);
             tabPage1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)myLibraryDataGridView).EndInit();
+            tabPage2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)genresDataGridView).EndInit();
             ResumeLayout(false);
         }
 
@@ -211,5 +256,8 @@
         private DataGridViewTextBoxColumn myLibraryBookNameColumn;
         private DataGridViewTextBoxColumn myLibraryBookAuthorColumn;
         private DataGridViewTextBoxColumn myLibraryBookGenreColumn;
+        private TabPage tabPage2;
+        private DataGridView genresDataGridView;
+        private DataGridViewTextBoxColumn genreColumn;
     }
 }

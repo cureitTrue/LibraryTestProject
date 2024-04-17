@@ -25,9 +25,12 @@ namespace Library
             bookNameTextBox.Text = book.Name;
             bookAuthorTextBox.Text = book.Author;
             bookDescTextBox.Text = book.Desc;
-            bookGenreComboBox.Items.Clear();
-            bookGenreComboBox.Items.Add(book.Genre);
-            bookGenreComboBox.SelectedIndex = 0;
+            using (DatabaseContext dbContext = new DatabaseContext())
+            {
+                bookGenreComboBox.Items.Clear();
+                bookGenreComboBox.Items.Add(dbContext.Find<GenreData>(book.GenreId));
+                bookGenreComboBox.SelectedIndex = 0;
+            }
 
             ShowDialog();
         }
@@ -41,9 +44,13 @@ namespace Library
             bookGenreComboBox.Items.Clear();
             using (DatabaseContext dbContext = new DatabaseContext())
             {
-                foreach (GenreData genre in dbContext.Genres.OrderBy(x => x.Genre))
+                foreach (GenreData genre in dbContext.Genres.OrderBy(x => x.GenreStr))
                 {
-                    bookGenreComboBox.Items.Add(genre.Genre);
+                    if (string.IsNullOrWhiteSpace(genre.GenreStr))
+                    {
+                        continue;
+                    }
+                    bookGenreComboBox.Items.Add(genre);
                 }
             }
             bookGenreComboBox.SelectedIndex = 0;
@@ -78,7 +85,7 @@ namespace Library
                         Name = bookNameTextBox.Text,
                         Author = bookAuthorTextBox.Text,
                         Desc = bookDescTextBox.Text,
-                        Genre = bookGenreComboBox.Text,
+                        GenreId = ((GenreData)bookGenreComboBox.SelectedItem).Id,
                         LocalId = localId
                     });
                     dbContext.SaveChanges();
@@ -95,9 +102,13 @@ namespace Library
             bookGenreComboBox.Items.Clear();
             using (DatabaseContext dbContext = new DatabaseContext())
             {
-                foreach (GenreData genre in dbContext.Genres.OrderBy(x => x.Genre))
+                foreach (GenreData genre in dbContext.Genres.OrderBy(x => x.GenreStr))
                 {
-                    bookGenreComboBox.Items.Add(genre.Genre);
+                    if (string.IsNullOrWhiteSpace(genre.GenreStr))
+                    {
+                        continue;
+                    }
+                    bookGenreComboBox.Items.Add(genre);
                 }
             }
             bookGenreComboBox.SelectedIndex = 0;

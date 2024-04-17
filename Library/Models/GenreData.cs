@@ -6,6 +6,11 @@ namespace Library.Models
     {
         [Key]
         public int Id { get; set; }
-        public string Genre { get; set; }
+        public string GenreStr { get; set; }
+
+        public override string ToString()
+        {
+            return GenreStr;
+        }
     }
 }

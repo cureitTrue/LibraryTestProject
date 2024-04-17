@@ -36,6 +36,7 @@
             // 
             // bookGenreTextBox
             // 
+            bookGenreTextBox.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             bookGenreTextBox.Location = new Point(147, 7);
             bookGenreTextBox.Name = "bookGenreTextBox";
             bookGenreTextBox.Size = new Size(280, 27);
@@ -62,6 +63,7 @@
             // 
             // cancelButton
             // 
+            cancelButton.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             cancelButton.Location = new Point(223, 45);
             cancelButton.Name = "cancelButton";
             cancelButton.Size = new Size(204, 31);
